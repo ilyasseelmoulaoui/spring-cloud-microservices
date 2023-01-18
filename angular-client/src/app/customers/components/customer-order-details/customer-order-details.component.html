@@ -1,0 +1,33 @@
+<div style="font-size: large"><strong> Customer : </strong>{{order.customer.name}}</div>
+<div style="font-size: large"><strong> Date : </strong>{{order.created | date}}</div>
+
+<div class="card mt-4">
+    <div class="card-body">
+      <div class="mt-4">
+        <table class="table table-hover" style="border: red">
+            <thead>
+              <tr>
+                <th scope="col">Ref</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of order.products">
+                <th>{{item.productId}}</th>
+                <td>{{item.product.name}}</td>
+                <td>{{item.product.price | currency : ' ' : 'symbol' :'3.2-2'}} $</td>
+                <td>{{item.product.quantity}}</td>
+<!--                <td class="text-warning">{{item.amount | currency : 'USD ' : 'symbol' :'4.2-2'}}<td>-->
+                <td class="text-warning">{{item.amount | currency : ' ' : 'symbol' :'3.2-2'}} $<td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-center" style="margin: fill;font-size: x-large;background-color: lightseagreen">TOTAL : {{order.total | currency : ' ' : 'symbol' :'.2-2'}} $</div>
+      </div>
+
+    </div>
+  </div>
+
